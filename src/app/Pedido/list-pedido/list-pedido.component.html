@@ -26,6 +26,7 @@
                 <td>{{p.descricao}}</td>
                 <td>{{p.status}}</td>
                 <td><button [routerLink]= "['/addpedido',p.id]" routerLinkActive = "router-link-active" class="btn btn-info">+ Detalhes</button></td>
+                <button type="button" class="btn btn-primary mb-2">Deletar</button>
             </tr>
         </tbody>
     </table>
