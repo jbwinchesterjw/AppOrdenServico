@@ -1,16 +1,68 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ModuleWithProviders } from '@angular/compiler/src/core';
+import { LoginComponent } from './login/login.component';
+import { HttpInterceptorModule } from './service/header-intercptor.service';
+import { combineLatest } from 'rxjs';
+import { AddComponent } from './Usuario/add/add.component';
+import { ListComponent } from './Usuario/list/list.component';
+import { GuardiaoGuard } from './service/guardiao.guard';
+import { NgxCurrencyModule } from 'ngx-currency';
+
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxPaginationModule} from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddPedidoComponent } from './pedido/add-pedido/add-pedido.component';
+import { ListPedidoComponent } from './pedido/list-pedido/list-pedido.component';
+
+export const appRouters: Routes = [
+  {path : 'home', component : HomeComponent, canActivate : [GuardiaoGuard]},
+  {path : 'login', component : LoginComponent},
+  {path : '', component : LoginComponent},
+  {path : 'listUser', component : ListComponent, canActivate : [GuardiaoGuard]},
+  {path : 'addUser', component : AddComponent, canActivate : [GuardiaoGuard]},
+  {path : 'addUser/:id', component : AddComponent, canActivate : [GuardiaoGuard]},
+  {path : 'listpedido', component : ListPedidoComponent, canActivate : [GuardiaoGuard]},
+  {path : 'addpedido', component : AddPedidoComponent, canActivate : [GuardiaoGuard]},
+  {path : 'addpedido/:id', component : AddPedidoComponent, canActivate : [GuardiaoGuard]},
+  
+];
+
+export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
+
+export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    AddComponent,
+    ListComponent,
+    AddPedidoComponent,
+    ListPedidoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    routes,
+    HttpInterceptorModule,
+    FormsModule,
+    NgxMaskModule.forRoot(optionsMask),
+    NgxPaginationModule,
+    NgbModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

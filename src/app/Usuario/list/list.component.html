@@ -1,0 +1,34 @@
+<br/>
+<br/>
+<form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome" placeholder="Pesquisa Por Nome">
+    </div>
+    <button type="button" (click)="consultarUser()" class="btn btn-primary mb-2">Pesquisar</button>
+    <button type="button" [routerLink]= "['/addUser']" routerLinkActive = "router-link-active" class="btn btn btn-success mb-2" style="margin-left: 10px;">Novo cadastro</button>
+</form>
+<br/>
+<br/>
+<table class="table table-sm table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOME</th>
+            <th scope="col">LOGIN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of user | paginate : {itemsPerPage : 5, currentPage: p, totalItems : total }; let i = index">
+            <td>{{u.id}}</td>
+            <td>{{u.nome}}</td>
+            <td>{{u.login}}</td>
+            <td><button (click)="deletarUsuario(u.id, i)" class="btn btn-danger">Excluir</button></td>
+            <td><button [routerLink]= "['/addUser',u.id]" routerLinkActive = "router-link-active" class="btn btn-warning">Editar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="text-center">
+    <pagination-controls (pageChange) = "carregarPaginar(p = $event);" previousLabel="Voltar" nextLabel="Anvançar" responsive = "true"></pagination-controls>
+</div> 
+<router-outlet></router-outlet>

@@ -1,0 +1,27 @@
+<div class="sidenav">
+    <div class="login-main-text">
+       <h2>Application<br> Login Page</h2>
+       <p>Login or register from here to access.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+          <form>
+
+             <div class="form-group">
+                <label for="Login">Login</label>
+                <input type="text" class="form-control"  [(ngModel)] = "usuario.login" id="Login" name="Login" placeholder="Informe seu Login">
+             </div>
+             
+             <div class="form-group">
+                <label>Senha</label>
+                <input type="password" class="form-control" [(ngModel)] = "usuario.senha" id="Senha" name="Senha" placeholder="Informe sua Senha">
+             </div>
+
+             <button type="submit" class="btn btn-black" (click)="login()">Login</button>
+             <button type="submit" class="btn btn-secondary">Register</button>
+          </form>
+       </div>
+    </div>
+ </div>
