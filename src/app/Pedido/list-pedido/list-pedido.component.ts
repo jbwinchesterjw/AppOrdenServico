@@ -36,7 +36,7 @@ export class ListPedidoComponent implements OnInit {
     //}
   }
  
-  public deletarUsuario(id: Number, index) {
+  public deletarPedido(id: Number, index) {
     if (confirm('Deseja mesmo excluir esse pedido')) {
       this.pedidoService.deletPedido(id).subscribe(data => {
 
