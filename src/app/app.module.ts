@@ -21,8 +21,6 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddPedidoComponent } from './pedido/add-pedido/add-pedido.component';
-import { ListPedidoComponent } from './pedido/list-pedido/list-pedido.component';
 
 export const appRouters: Routes = [
   {path : 'home', component : HomeComponent, canActivate : [GuardiaoGuard]},
@@ -31,10 +29,6 @@ export const appRouters: Routes = [
   {path : 'listUser', component : ListComponent, canActivate : [GuardiaoGuard]},
   {path : 'addUser', component : AddComponent, canActivate : [GuardiaoGuard]},
   {path : 'addUser/:id', component : AddComponent, canActivate : [GuardiaoGuard]},
-  {path : 'listpedido', component : ListPedidoComponent, canActivate : [GuardiaoGuard]},
-  {path : 'addpedido', component : AddPedidoComponent, canActivate : [GuardiaoGuard]},
-  {path : 'addpedido/:id', component : AddPedidoComponent, canActivate : [GuardiaoGuard]},
-  
 ];
 
 export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
@@ -48,8 +42,6 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     LoginComponent,
     AddComponent,
     ListComponent,
-    AddPedidoComponent,
-    ListPedidoComponent,
   ],
   imports: [
     BrowserModule,

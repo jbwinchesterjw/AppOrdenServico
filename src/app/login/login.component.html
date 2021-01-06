@@ -1,26 +1,28 @@
 <div class="sidenav">
     <div class="login-main-text">
-       <h2>Application<br> Login Page</h2>
-       <p>Login or register from here to access.</p>
+       <h2>Para fazer o login<br> Login = joao, Senha = 123</h2>
+       <p>Projeto criado em Angular com Spring Boot, ainda em Aprimoramento !.</p>
     </div>
  </div>
  <div class="main">
     <div class="col-md-6 col-sm-12">
        <div class="login-form">
-          <form>
+          <form #formValidate="ngForm">
 
              <div class="form-group">
                 <label for="Login">Login</label>
-                <input type="text" class="form-control"  [(ngModel)] = "usuario.login" id="Login" name="Login" placeholder="Informe seu Login">
+                <span style="color: red; font-size: 23px;" *ngIf="loginValidate.invalid"> *</span>
+                <input type="text" [(ngModel)] = "usuario.login" #loginValidate='ngModel' class="form-control" id="Login" name="Login" placeholder="Informe seu Login">
              </div>
              
              <div class="form-group">
                 <label>Senha</label>
-                <input type="password" class="form-control" [(ngModel)] = "usuario.senha" id="Senha" name="Senha" placeholder="Informe sua Senha">
+                <span style="color: red; font-size: 23px;" *ngIf="senhaValidate.invalid"> *</span>
+                <input type="password" class="form-control" [(ngModel)] = "usuario.senha" #senhaValidate='ngModel' id="Senha" name="Senha" placeholder="Informe sua Senha">
              </div>
 
              <button type="submit" class="btn btn-black" (click)="login()">Login</button>
-             <button type="submit" class="btn btn-secondary">Register</button>
+             <button type="submit" class="btn btn-secondary" [disabled]="formValidate.invalid" (click)="recuperacaoLogin()">Recuperar Login</button>
           </form>
        </div>
     </div>
